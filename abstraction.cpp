@@ -1,7 +1,11 @@
 #include <iostream>
 using namespace std;
 
-class Employee{
+class AbstractEmployee{
+    virtual void Promotion() = 0;
+};
+
+class Employee:AbstractEmployee {
 private:
     string name;
     string company;
@@ -41,13 +45,18 @@ public:
         cout<<"Company- "<<company<<endl;
         cout<<"Age- "<<age<<endl;
     }
+
+    void Promotion(){
+        if(age>25)
+            cout<<name<<" is going to get a promotion."<<endl;
+        else
+            cout<<name<<" is not getting promoted."<<endl;
+    }
 };
 
 int main(){
     Employee e1 = Employee("Shila","Samsung",25);
-    e1.Introduce();
-
-    e1.setName("Sima");
-    e1.setAge(5);
-    e1.Introduce();
+    Employee e2 = Employee("John","Amazon",35);
+    e1.Promotion();
+    e2.Promotion();
 }
